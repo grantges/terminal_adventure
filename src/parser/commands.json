@@ -1,0 +1,39 @@
+{
+    "north": "Direction",
+    "n": "Direction",
+
+    "east": "Direction",
+    "e": "Direction",
+
+    "south": "Direction",
+    "s": "Direction",
+
+    "west": "Direction",
+    "w": "Direction",
+    
+    "look": "Action",
+    "l": "Action",
+
+    "take": "Action",
+    "get": "Action",
+    "t": "Action",
+
+    
+    "attack": "Action",
+    "kill": "Action",
+
+    "go": "Action",
+
+    "move": "Action",
+    "mv": "Action",
+
+    "help": "Command",
+    "h": "Command",
+
+    "talk": "Command",
+    
+    "light": "Command",
+
+    "equip": "Command",
+    "eq": "Command"
+}
