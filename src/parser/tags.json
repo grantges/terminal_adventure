@@ -1,0 +1,8 @@
+{
+    "Command": {
+        "isA": "Verb"
+    },
+    "Direction": {
+        "isA": "Adjective"
+    }
+}

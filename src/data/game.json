@@ -1,0 +1,21 @@
+{
+    "house": {
+        "kitchen": {
+            "title":"Kitchen",
+            "description":"In the kitchen, you can see a table with a half eaten sandwich left behind. There is a fire with a black pot with steaming liquid and underneath the window to the east is a sink and cabinets."
+        },
+        "west_of_house":{
+            "title":"West of House",
+            "description":"West of House\nYou are standing in an open field west of a white house, with a boarded front door.\nThere is a mailbox here.\n\n"
+        },
+        "north_of_house":{
+            "title":"North of House",
+            "description":"You are standing north of a white house. You there are windows here but they are boarded up."
+        },
+        "south_of_house":{
+            "title":"South of House",
+            "description":"You are standing on the south side of a white house. There is a gravel path to the east"
+        }
+    },
+    "dungeon": {}
+}

@@ -1,0 +1,30 @@
+{
+    "north": "Direction",
+    "n": "Direction",
+
+    "east": "Direction",
+    "e": "Direction",
+
+    "south": "Direction",
+    "s": "Direction",
+
+    "west": "Direction",
+    "w": "Direction",
+    
+    "look": "Action",
+    "l": "Action",
+
+    "take": "Action",
+    "t": "Action",
+
+    "get": "Action",
+    
+    "attack": "Action",
+    "go": "Action",
+
+    "move": "Action",
+    "mv": "Action",
+
+    "help": "Command",
+    "h": "Command"
+}

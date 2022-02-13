@@ -1,0 +1,13 @@
+{
+    "objects": {
+        "torch":{"name":"Torch","description":"A rudimentary torch made from wood and oil soaked cloth.", "weight":1},
+        "mailbox": {"name":"Mailbox","description":"You see a small open mailbox, there is a leaflet inside.", "weight":-1}
+    },
+    "weapons":{
+        "knife":{"name":"Knife","description":"A small pocket knife with an ivory handle. The blade is very sharp.", "weight":0.5, "damage":2, "range":1}
+    },
+    "storage":{
+        "backpack":{"name":"Backpack","description":"A small backpack for carrying your items.", "weight":1, "maxWeight":10, "numberOfSlots":5},
+        "chest":{"name":"Chest","description":"A small wooden chest.", "weight":5, "maxWeight":-1, "numberOfSlots":10}
+    }
+}
