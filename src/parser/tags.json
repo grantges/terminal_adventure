@@ -4,5 +4,17 @@
     },
     "Direction": {
         "isA": "Adjective"
+    },
+    "Item": {
+        "isA": "Noun"
+    },
+    "Character": {
+        "isA": "Person"
+    },
+    "Mob": {
+        "isA": "Noun"
+    },
+    "Weapon": {
+        "isA": "Noun"
     }
 }

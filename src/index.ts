@@ -35,7 +35,8 @@ const client = new Client(processCommand, "Dungeons & Dragons");
 function processCommand(cmd: string) {
 
     let response = commandParser.parse(cmd);
-    client.appendGameWindowText(response.description);
+    
+    client.appendGameWindowText(JSON.stringify(response));
 
 }
 

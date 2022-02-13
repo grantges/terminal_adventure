@@ -4,7 +4,8 @@
         "mailbox": {"name":"Mailbox","description":"You see a small open mailbox, there is a leaflet inside.", "weight":-1}
     },
     "weapons":{
-        "knife":{"name":"Knife","description":"A small pocket knife with an ivory handle. The blade is very sharp.", "weight":0.5, "damage":2, "range":1}
+        "knife":{"name":"Knife","description":"A small pocket knife with an ivory handle. The blade is very sharp.", "weight":0.5, "damage":1, "range":1},
+        "sword":{"name":"Sword","description":"A one handed sword. While sharp, there is nothing special about it.", "weight":2.0, "damage":2, "range":1}
     },
     "storage":{
         "backpack":{"name":"Backpack","description":"A small backpack for carrying your items.", "weight":1, "maxWeight":10, "numberOfSlots":5},

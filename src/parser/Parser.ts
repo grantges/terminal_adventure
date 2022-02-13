@@ -28,19 +28,23 @@
 import nlp from 'compromise';
 
 // NLP Grammar files
-import grammar from './grammar.json';
+import mobs from './mobs.json';
 import tags from './tags.json';
+import places from './places.json';
 import items from '../data/items.json';
+import commands from './commands.json';
+import characters from './characters.json';
 
-
-interface ParserResponse {
+type ParserResponse = {
+    direction?: string,
     action?: string,
     noun?: string,
     verb?: string,
-    object?: string,
-    description: string
+    character?: string,
+    mob?: string,
+    item?: string,
+    weapon?: string,
 }
-
 
 export default class Parser {
 
@@ -51,64 +55,37 @@ export default class Parser {
     setup() {
         nlp.extend((Doc:any, world:any) => {
             world.addTags(tags);
-            world.addWords(grammar);
+            world.addWords(mobs);
+            world.addWords(places);
+            world.addWords(commands);
+            world.addWords(characters);
+
+            let json = {};
+
+            Object.keys(items.weapons).forEach((key) => { 
+                (json as any)[(items.weapons as any)[key].name] = "Weapon";          
+            });
+            Object.keys(items.objects).forEach( (key) => {
+                (json as any)[(items.objects as any)[key].name] = "Item";  
+            })
+
+            world.addWords(json);
         })
     }
 
     parse(command: string) : ParserResponse {
 
         let text = nlp(command);
-        let response: ParserResponse = {description: ''};
+        let response: ParserResponse = {};
 
-        switch(text.match('#Action').text()) {
-
-            case 'look':
-                response.action = 'look';
-
-                if(text.match('#Noun').text()) {
-                    response.noun = text.nouns().text();
-                    response.description= (items.objects as any)[response.noun] ? (items.objects as any)[response.noun].description : '';
-                }
-                else {
-                    response.description = "You look around, things are nice...";
-                }
-                
-                break;
-
-            case 'take':
-            case 'get':
-                response.action = 'get';
-                response.description = "After looking around, you decide to take it";
-                break;
-            
-            case 'attack': 
-                response.action = 'attack';
-
-                if(text.match('#Noun').text()) {
-                    response.description = "You attack the " + text.nouns().text();
-                }
-                else {
-                    response.description = "What do you want to attack? Is there a Grue?"
-                }
-                
-                break;
-            
-            default: 
-                response.description = "I really just don't understand you sometimes..."
-        }
-
-        // TODO: Account for Verb and Direction (movement)
-        //
-        // if(text.has('#Verb') && text.has('#Noun')){
-        //     var json = text.json(); 
-        // }
-        // else if(text.has('#Direction')){
-        //     response.direction = "You move " + text.match("#Direction").text();
-        // }
-        // else {
-        //     response.direction = "I'm not sure about that...";
-        // }
-
+        response.direction = text.match('#Direction').first().text();
+        response.action = text.match('#Action').first().text();
+        response.noun = text.match('#Noun').first().text();
+        response.character = text.match('#Character').first().text();
+        response.mob = text.match('#Mob').first().text();
+        response.weapon = text.match('#Weapon').first().text();
+        response.item = text.match('#Item').first().text();
+        
         return response;
     }
 
