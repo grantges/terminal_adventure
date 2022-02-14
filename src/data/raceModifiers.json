@@ -1,0 +1,26 @@
+{
+    "Human": {
+        "strength": 1,
+        "dexterity": 1,
+        "constitution": 1,
+        "intelligence": 1,
+        "wisdom": 1,
+        "charisma": 1
+    }, 
+    "Elf": {
+        "dexterity":2,
+        "wisdom":2
+    },
+    "Dwarf": {
+        "strength": 2,
+        "constitution": 2
+    },
+    "Orc": {
+        "strength": 2,
+        "constitution": 2
+    },
+    "Tiefling":{
+        "intelligence": 1,
+        "charisma": 2
+    }
+}
