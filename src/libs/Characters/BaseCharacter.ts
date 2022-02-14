@@ -25,41 +25,31 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { ICharacter } from "../Interfaces";
-import { calculateModifier, rollAbilityScore } from "../utils";
+import { IAbilities, ICharacter, ISkills } from "../Interfaces";
+import { calculateModifier, rollAbilityScore, calculateProficiencyBonus } from "../utils";
 import { CharacterClass, CharacterSize, CharacterRace } from "../Enums";
 
 
-export default class Character implements ICharacter {
+
+export default class BaseCharacter implements ICharacter {
     
-    name: string = '';
-    race: CharacterRace = CharacterRace.UNKNOWN;
-    strength: number = 0;
-    dexterity: number = 0;
-    intelligence: number = 0;
-    wisdom: number = 0;
-    charisma: number = 0;
-    constitution: number = 0;
+    name: string | undefined;
+    abilities: IAbilities | undefined;
+    skills: ISkills | undefined;
     armorClass: number = 0;
     maxHitPoints: number = 0;
     currentHitPoints: number = 0;
     speed: number = 0;
+    race: CharacterRace = CharacterRace.UNKNOWN;
     size: CharacterSize  = CharacterSize.UNKNOWN;
     class: CharacterClass = CharacterClass.UNKNOWN;
     level: number = 1;
     experience: number = 0;
 
-    constructor() {
-
-        this.strength = rollAbilityScore();
-        this.dexterity = rollAbilityScore();
-        this.constitution = rollAbilityScore();
-        this.intelligence = rollAbilityScore();
-        this.wisdom = rollAbilityScore();
-        this.charisma = rollAbilityScore();
-        
+    get proficiencyBonus(): number {
+        return calculateProficiencyBonus(this.level);
     }
-    
+
     damage(points: number) {
         
         if(this.currentHitPoints - points >= 0) {
