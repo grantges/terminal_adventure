@@ -29,8 +29,6 @@ import { IAbilities, ICharacter, ISkills } from "../Interfaces";
 import { calculateModifier, rollAbilityScore, calculateProficiencyBonus } from "../utils";
 import { CharacterClass, CharacterSize, CharacterRace } from "../Enums";
 
-
-
 export default class BaseCharacter implements ICharacter {
     
     name: string | undefined;

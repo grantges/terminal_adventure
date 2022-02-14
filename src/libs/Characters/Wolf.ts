@@ -1,9 +1,9 @@
 /*
- * Goblin.ts
+ * Wolf.ts
  *
  * @author: Bert Grantges
  * @repository: https://github.com/grantges/terminal_adventure
- * @description: Goblin MOB object.
+ * @description: Wolf MOB object.
  *
  * Created on Sun Feb 13 2022
  *
@@ -28,7 +28,7 @@
 import { CharacterSize } from "../Enums";
 import BaseCharacter from "./BaseCharacter";
 
-export default class Goblin extends BaseCharacter {
+export default class Wolf extends BaseCharacter {
 
 
     constructor() {
@@ -36,12 +36,17 @@ export default class Goblin extends BaseCharacter {
 
         // Racial Modifiers for Goblin
         this.abilities = {
-            strength: 8,
-            dexterity: 14,
-            constitution: 10,
-            intelligence: 10,
-            wisdom: 8,
-            charisma: 8
+            strength: 12,
+            dexterity: 15,
+            constitution: 12,
+            intelligence: 3,
+            wisdom: 12,
+            charisma: 6
+        }
+
+        this.skills = {
+            perception: 3,
+            stealth: 4,
         }
         
         this.size = CharacterSize.SMALL

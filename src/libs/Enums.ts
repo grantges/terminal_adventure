@@ -3,8 +3,8 @@ export enum CharacterSize {
     SMALL,
     MEDIUM,
     LARGE,
-    XLARGE,
-    XXLARGE
+    HUGE,
+    GARGANTUAN
 }
 
 export enum CharacterRace {
