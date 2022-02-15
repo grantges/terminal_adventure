@@ -34,6 +34,8 @@ export default class Goblin extends BaseCharacter {
     constructor() {
         super();
 
+        this.race = "Goblin";
+
         // Racial Modifiers for Goblin
         this.abilities = {
             strength: 8,
@@ -42,9 +44,14 @@ export default class Goblin extends BaseCharacter {
             intelligence: 10,
             wisdom: 8,
             charisma: 8
+        };
+        this.skills = {
+            stealth: 6
         }
-        
         this.size = CharacterSize.SMALL
+        this.maxHitPoints = this.currentHitPoints = 7;
+        this.armorClass = 15;
+        this.speed = 30;
         
     }
 
