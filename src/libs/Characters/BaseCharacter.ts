@@ -28,6 +28,9 @@
 import { IAbilities, ICharacter, ISkills } from "../Interfaces";
 import { roll, calculateModifier, rollAbilityScore, calculateProficiencyBonus } from "../utils";
 import { CharacterClass, CharacterSize, CharacterRace } from "../Enums";
+import Weapon from '../Weapon'
+import { INSPECT_MAX_BYTES } from "buffer";
+import Item from "../Item";
 
 export default class BaseCharacter implements ICharacter {
     
@@ -44,6 +47,10 @@ export default class BaseCharacter implements ICharacter {
     level: number = 1;
     experience: number = 0;
     savingThrows: number = 0;
+
+    //armor: 
+    weapon: Weapon | undefined;
+    
 
     get proficiencyBonus(): number {
         return calculateProficiencyBonus(this.level);
@@ -84,12 +91,26 @@ export default class BaseCharacter implements ICharacter {
         }
     }
 
+    equip(type: string, key: string) {
+        
+        switch(type){
+            case 'weapons':
+                this.weapon = new Weapon(type, key);
+                break;
+            case 'armor':
+                break;
+            default:
+        }
+    }
+
     attack(character: BaseCharacter) : number {
 
         const attackRoll = roll('1d20');
 
         if(attackRoll >= character.armorClass) {
-            const damageRoll = roll('1d6');
+            
+            const attackDi = this.weapon?.damage || '1d4';
+            const damageRoll = roll(attackDi);
             character.damage(damageRoll);
 
             return damageRoll;

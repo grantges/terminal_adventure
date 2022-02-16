@@ -4,11 +4,16 @@
         "mailbox": {"name":"Mailbox","description":"You see a small open mailbox, there is a leaflet inside.", "weight":-1}
     },
     "weapons":{
-        "knife":{"name":"Knife","description":"A small pocket knife with an ivory handle. The blade is very sharp.", "weight":0.5, "damage":1, "range":1},
-        "sword":{"name":"Sword","description":"A one handed sword. While sharp, there is nothing special about it.", "weight":2.0, "damage":2, "range":1}
+        "dagger":{"name":"Dagger","description":"A small pocket knife with an ivory handle. The blade is very sharp.", "weight":0.5, "damage":"1d4", "range":1},
+        "long-sword":{"name":"Long-sword","description":"A one handed sword. While sharp, there is nothing special about it.", "weight":3.0, "damage":"1d8", "range":1}
+    },
+    "armor":{
+        "leather":{"name":"Leather Armor", "category":"Light", "armorClass":11, "weight":10.0, "cost":10},
+        "padded":{"name":"Padded Armor", "category":"Light", "armorClass":11, "weight":10.0, "cost":10},
+        "Studded":{"name":"Studded Leather Armor", "category":"Light", "armorClass":13.0, "cost":45}
     },
     "storage":{
-        "backpack":{"name":"Backpack","description":"A small backpack for carrying your items.", "weight":1, "maxWeight":10, "numberOfSlots":5},
+        "backpack":{"name":"Backpack","description":"A small backpack for carrying your items.", "weight":1.0, "maxWeight":10, "numberOfSlots":5},
         "chest":{"name":"Chest","description":"A small wooden chest.", "weight":5, "maxWeight":-1, "numberOfSlots":10}
     }
 }

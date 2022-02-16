@@ -1,5 +1,6 @@
 export enum CharacterSize {
     UNKNOWN = 0,
+    TINY,
     SMALL,
     MEDIUM,
     LARGE,

@@ -81,10 +81,7 @@ export default class Client {
         this.gameWindow.appendContent(text);
     }
 
-
     render() {
-
         this.screen.render();
-    
     }
 }

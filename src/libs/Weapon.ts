@@ -25,18 +25,18 @@
  */
 
 import Item from './Item';
+export default class Weapon extends Item  {
 
-class Weapon extends Item  {
-
-    damage: number;
+    damage: string;
     range: number;
 
-    constructor( name: string, description: string, weight: number, damage:number, range:number ) {
+    constructor( type: string, key: string) {
 
-        super(name, description, weight);
+        super(type, key);
 
-        this.damage = damage;
-        this.range = range;
+        this.damage = (this.reference as any).damage;
+        this.range = (this.reference as any).range;
+
     }
 
 }

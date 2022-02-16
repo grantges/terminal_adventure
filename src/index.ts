@@ -35,10 +35,9 @@ const commandParser = new Parser();
 const client = new Client(processCommand, "Dungeons & Dragons");
 
 var player = new Player(CharacterRace.HUMAN, "Gareth");
-
+player.equip('weapons', 'long-sword');
 
 gameLoop();
-
 
 function processCommand(cmd: string) {
 
@@ -58,7 +57,7 @@ function processCommand(cmd: string) {
             
             var combatants = [player, goblin].sort( (char) => char.initiative );
 
-
+            var savingThrows = 0;
             while(!player.isDead && !goblin.isDead){
 
                 combatants.forEach( (char, idx ) => {
