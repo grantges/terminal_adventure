@@ -59,7 +59,7 @@ export interface ISkills {
 
 export interface ICharacter {
     name?: string,
-    race: CharacterRace,
+    race: CharacterRace | string,
     abilities?: IAbilities,
     skills?: ISkills,
     armorClass: number,

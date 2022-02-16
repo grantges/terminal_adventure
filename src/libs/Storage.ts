@@ -33,7 +33,7 @@ enum StorageErrors {
     STORAGE_FULL = "STORAGE_FULL"
 }
 
-class Storage extends Item {
+export default class Storage extends Item {
 
     maxWeight: number;
     currentWeight: number;
@@ -42,9 +42,9 @@ class Storage extends Item {
     items: Array<Item>;
     
 
-    constructor(name: string, description: string, weight: number, maxWeight: number = 10, numberOfSlots: number = 5, items: Array<Item> = []){
+    constructor(type: string, key: string, maxWeight: number = 10, numberOfSlots: number = 5, items: Array<Item> = []){
         
-        super(name, description, weight);
+        super(type, key);
         this.maxWeight = maxWeight;
         this.numberOfSlots = numberOfSlots;
         this.emptySlots = numberOfSlots;

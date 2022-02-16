@@ -26,8 +26,11 @@
  */
 
 import { IAbilities, ICharacter, ISkills } from "../Interfaces";
-import { calculateModifier, rollAbilityScore, calculateProficiencyBonus } from "../utils";
+import { roll, calculateModifier, rollAbilityScore, calculateProficiencyBonus } from "../utils";
 import { CharacterClass, CharacterSize, CharacterRace } from "../Enums";
+import Weapon from '../Weapon'
+import { INSPECT_MAX_BYTES } from "buffer";
+import Item from "../Item";
 
 export default class BaseCharacter implements ICharacter {
     
@@ -38,14 +41,31 @@ export default class BaseCharacter implements ICharacter {
     maxHitPoints: number = 0;
     currentHitPoints: number = 0;
     speed: number = 0;
-    race: CharacterRace = CharacterRace.UNKNOWN;
+    race: CharacterRace | string = CharacterRace.UNKNOWN;
     size: CharacterSize  = CharacterSize.UNKNOWN;
     class: CharacterClass = CharacterClass.UNKNOWN;
     level: number = 1;
     experience: number = 0;
+    savingThrows: number = 0;
+
+    //armor: 
+    weapon: Weapon | undefined;
+    
 
     get proficiencyBonus(): number {
         return calculateProficiencyBonus(this.level);
+    }
+
+    get initiative(): number {
+        return roll('1d20+'+ calculateModifier(this.abilities?.dexterity || 10))
+    }
+
+    get isDead(): boolean {
+        return (this.currentHitPoints <= 0 && this.savingThrows <= 0);
+    }
+
+    get isUnconscious(): boolean {
+        return (this.currentHitPoints <= 0 && this.savingThrows > 0);
     }
 
     damage(points: number) {
@@ -55,6 +75,9 @@ export default class BaseCharacter implements ICharacter {
         }
         else {
             this.currentHitPoints = 0;
+            if(this.savingThrows != 0){
+                this.savingThrows--;
+            }
         }
 
     }
@@ -67,4 +90,34 @@ export default class BaseCharacter implements ICharacter {
             this.currentHitPoints = this.maxHitPoints;
         }
     }
+
+    equip(type: string, key: string) {
+        
+        switch(type){
+            case 'weapons':
+                this.weapon = new Weapon(type, key);
+                break;
+            case 'armor':
+                break;
+            default:
+        }
+    }
+
+    attack(character: BaseCharacter) : number {
+
+        const attackRoll = roll('1d20');
+
+        if(attackRoll >= character.armorClass) {
+            
+            const attackDi = this.weapon?.damage || '1d4';
+            const damageRoll = roll(attackDi);
+            character.damage(damageRoll);
+
+            return damageRoll;
+        }
+
+        return 0;
+    }
+
+    
 }

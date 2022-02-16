@@ -11,6 +11,13 @@ export function calculateProficiencyBonus(level: number): number {
     return proficiencyTable[level-1];
 }
 
+export function roll(param:string){
+
+    const dice = new Dice();
+    return dice.roll(param).result;
+    
+}
+
 export function rollAbilityScore() : number {
 
     const dice = new Dice();

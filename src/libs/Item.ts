@@ -24,23 +24,31 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
+import items from '../data/items.json';
 import { v4 as uuid } from "uuid";
 
 export default class Item implements Item {
 
     id: string;
+    reference: JSON;
     name: string;
     description: string;
     weight: number;
-    stackable: boolean;
 
-    constructor( name: string, description: string = '', weight: number = 0, stackable: boolean = false){
+    constructor( type: string, key: string){
+        
         this.id = uuid();
-        this.name = name;
-        this.description = description;
-        this.weight = weight;
-        this.stackable = stackable;
+        this.reference = (items as any)[type][key];
+        this.name = (this.reference as any).name;
+        this.description = (this.reference as any).description;
+        this.weight = (this.reference as any).weight;
+        
+        console.log("ITEM");
+        console.log(this.name);
+    }
+
+    static lookup(type:string, key:string): JSON {
+        return (items as any)[type][key];
     }
 
 }

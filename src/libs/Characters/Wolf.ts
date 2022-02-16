@@ -34,6 +34,8 @@ export default class Wolf extends BaseCharacter {
     constructor() {
         super();
 
+        this.race = 'Wolf';
+
         // Racial Modifiers for Goblin
         this.abilities = {
             strength: 12,
