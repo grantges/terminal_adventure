@@ -29,7 +29,6 @@ import { IAbilities, ICharacter, ISkills } from "../Interfaces";
 import { roll, calculateModifier, rollAbilityScore, calculateProficiencyBonus } from "../utils";
 import { CharacterClass, CharacterSize, CharacterRace } from "../Enums";
 import Weapon from '../Weapon'
-import { INSPECT_MAX_BYTES } from "buffer";
 import Item from "../Item";
 
 export default class BaseCharacter implements ICharacter {
